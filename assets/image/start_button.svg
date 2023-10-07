@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="48.948002mm"
+   height="15.875mm"
+   viewBox="0 0 48.948002 15.875"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
+   sodipodi:docname="start_button.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="true"
+     inkscape:zoom="4.1798822"
+     inkscape:cx="186.36889"
+     inkscape:cy="57.298266"
+     inkscape:window-width="2560"
+     inkscape:window-height="1369"
+     inkscape:window-x="1912"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1">
+    <inkscape:grid
+       id="grid1"
+       units="px"
+       originx="0"
+       originy="0"
+       spacingx="0.26458333"
+       spacingy="0.26458334"
+       empcolor="#3f3fff"
+       empopacity="0.25098039"
+       color="#3f3fff"
+       opacity="0.1254902"
+       empspacing="5"
+       dotted="false"
+       gridanglex="30"
+       gridanglez="30"
+       visible="true" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#000080;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round"
+       id="rect1"
+       width="48.947918"
+       height="15.875001"
+       x="0"
+       y="0"
+       ry="2.6458471" />
+    <rect
+       style="fill:#ffffff;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round"
+       id="rect2"
+       width="46.302082"
+       height="13.229166"
+       x="1.3229179"
+       y="1.3229218"
+       ry="1.3229254" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.5833px;line-height:1.25;font-family:'Yokosuka Block';-inkscape-font-specification:'Yokosuka Block, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000080;fill-opacity:1;stroke-width:0.264583"
+       x="42.97892"
+       y="11.752777"
+       id="text2"><tspan
+         sodipodi:role="line"
+         id="tspan2"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.5833px;font-family:'Yokosuka Block';-inkscape-font-specification:'Yokosuka Block, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000080;fill-opacity:1;stroke-width:0.264583"
+         x="42.97892"
+         y="11.752777">カイシ</tspan></text>
+    <g
+       id="g3"
+       transform="translate(-39.687495,-112.44792)">
+      <path
+         style="fill:#000080;fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 62.17708,120.38542 c -6.175603,-5.29465 -12.349211,-5.28868 -18.520831,0 6.34803,-3.68877 12.506269,-3.36368 18.520832,0"
+         id="path2"
+         sodipodi:nodetypes="ccc" />
+      <path
+         style="fill:#000080;fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 62.17708,120.38542 c -6.175603,5.29465 -12.349211,5.28868 -18.520831,0 6.34803,3.68877 12.506269,3.36368 18.520832,0"
+         id="path2-8"
+         sodipodi:nodetypes="ccc" />
+      <ellipse
+         style="fill:#000080;fill-opacity:1;stroke:none;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round"
+         id="path3"
+         cx="56.449909"
+         cy="120.38542"
+         rx="2.8408804"
+         ry="2.6458364" />
+    </g>
+  </g>
+</svg>
