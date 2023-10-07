@@ -1,5 +1,6 @@
 import 'package:mesora/data/character_data.dart';
 
+// アプリデータ
 class MesoraAppData{
 
   // 得点
@@ -8,10 +9,13 @@ class MesoraAppData{
   // エンカウントリスト
   static final List<CharacterData> encounterList = [];
 
+  // ゲームの蒼エンカウント数
   static const int max_step = 4;
 
+  // エンカウンター
   static int encounter = 0;
 
+  // 初期化
   static void initialize(int length){
     encounter = 0;
     _scoreList.clear();
@@ -21,10 +25,12 @@ class MesoraAppData{
     }
   }
 
+  // スコア加算
   static void addScore(int index, int score){
     _scoreList[index] += score;
   }
 
+  // スコア取得
   static int getScore(int index){
     if(index >= _scoreList.length){
       return -1;
@@ -40,11 +46,9 @@ class MesoraAppData{
     return totalScore;
   }
 
-
   static CharacterData getCurrentCharacterData(){
     var idx = MesoraAppData.encounter >= 4 ? 3 : MesoraAppData.encounter;
     return MesoraAppData.encounterList[idx];
   }
-
 
 }

@@ -13,6 +13,7 @@ import 'package:mesora/pages/result_page.dart';
 import '../Data/mesora_app_data.dart';
 import '../data/character_data.dart';
 
+// ゲームメイン
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
   @override

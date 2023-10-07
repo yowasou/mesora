@@ -4,6 +4,7 @@ import 'package:mesora/pages/title_page.dart';
 
 import '../Data/mesora_app_data.dart';
 
+// 結果画面
 class ResultPage extends StatefulWidget {
   const ResultPage({super.key});
   @override
@@ -68,6 +69,34 @@ class _ResultPageState extends State<ResultPage> {
                                       ),
                                   )
                                 },
+                                Container(
+                                  padding: const EdgeInsets.only(right: 16, bottom: 16),
+                                  decoration: const BoxDecoration(
+                                    image: DecorationImage(
+                                      image:AssetImage('assets/image/scoretotalbox.png'),
+                                    ),
+                                  ),
+                                  width: 446,
+                                  height: 120,
+                                  child: Row(
+                                    mainAxisAlignment:MainAxisAlignment.end,
+                                    children: [
+                                      Container(
+                                        padding: const EdgeInsets.only(right:20.0),
+                                        child: Row(
+                                            children: [
+                                              Text(
+                                                  "${MesoraAppData.getTotalScore()}",
+                                                  style: const TextStyle(
+                                                    fontSize: 60,
+                                                  )
+                                              )
+                                            ]
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                )
                               ],
                             )
                           ],
