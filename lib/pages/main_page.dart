@@ -12,6 +12,8 @@ import 'package:mesora/pages/result_page.dart';
 
 import '../Data/mesora_app_data.dart';
 import '../data/character_data.dart';
+import '../vision_detector_views/detect_eye_data.dart';
+import '../vision_detector_views/face_detector_view.dart';
 
 // ゲームメイン
 class MainPage extends StatefulWidget {
@@ -58,7 +60,6 @@ class _MainPageState extends State<MainPage> {
   int _rightCenterX = 0;
   int _rightCenterY = 0;
 
-
   @override
   void initState() {
     // TODO: implement initState
@@ -86,9 +87,10 @@ class _MainPageState extends State<MainPage> {
 
         var character = MesoraAppData.getCurrentCharacterData();
         if(_stepFlag == PlayStatus.Calibration) {
-          _stepFlag = PlayStatus.Ready01;
-          Logger.info("Next step => PlayStatus.Ready");
-
+          if (DetectEyeData.instance.mode == DetectMode.Detect) {
+            _stepFlag = PlayStatus.Ready01;
+            Logger.info("Next step => PlayStatus.Ready");
+          }
         }else if(_stepFlag == PlayStatus.Ready01) {
           AudioManager.playSE(_getSeComeAssetName());
           _stepFlag = PlayStatus.Ready02;
@@ -106,8 +108,10 @@ class _MainPageState extends State<MainPage> {
           if (diff.duration.inSeconds <= 5) {
             // チェックタイム
             // チェック右
+            _rightImage = DetectEyeData().rightEyeImage;
             var hitTestRight = _hitTest(_rightImage, _rightX, _rightY, _rightCenterX, _rightCenterY, _baseWidth, _baseHeight);
             // チェック左
+            _leftImage = DetectEyeData().leftEyeImage;
             var hitTestLeft = _hitTest(_leftImage, _leftX, _leftY, _leftCenterX, _leftCenterY, _baseWidth, _baseHeight );
 
             if(hitTestRight && hitTestLeft && character.checkMode){
@@ -175,6 +179,7 @@ class _MainPageState extends State<MainPage> {
             body: SafeArea(
                 child: Stack(
                     children:[
+                      FaceDetectorView(),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text("SCORE : $score", style: const TextStyle(fontSize: 30.0)),
