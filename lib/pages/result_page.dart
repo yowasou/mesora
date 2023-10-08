@@ -22,12 +22,13 @@ class _ResultPageState extends State<ResultPage> {
             body: SafeArea(
                 child: Stack(
                     children:[
+                      Image.asset('assets/image/background4.png'),
                       Center(
                           child:Column(
                             children: [
                               Padding(
                                 padding: const EdgeInsets.only(top:20),
-                                child: Image.asset('assets/image/title.png', scale: 0.5),
+                                child: Image.asset('assets/image/title2.png', scale: 0.5),
                               ),
                             ],
                           )
@@ -42,9 +43,9 @@ class _ResultPageState extends State<ResultPage> {
                                 for(int i = 0; i < MesoraAppData.max_step; i++) ... {
                                   Container(
                                       padding: const EdgeInsets.only(right: 16, bottom: 16),
-                                      decoration: const BoxDecoration(
+                                      decoration: BoxDecoration(
                                         image: DecorationImage(
-                                          image:AssetImage('assets/image/scorebox.png'),
+                                          image:AssetImage("assets/image/scorebox${i+1}.png"),
                                         ),
                                       ),
                                       width: 446,
@@ -53,7 +54,7 @@ class _ResultPageState extends State<ResultPage> {
                                         mainAxisAlignment:MainAxisAlignment.end,
                                         children: [
                                           Container(
-                                            padding: const EdgeInsets.only(right:20.0),
+                                            padding: const EdgeInsets.only(right:48.0, bottom: 8.0),
                                             child: Row(
                                               children: [
                                                 Text(
@@ -82,7 +83,7 @@ class _ResultPageState extends State<ResultPage> {
                                     mainAxisAlignment:MainAxisAlignment.end,
                                     children: [
                                       Container(
-                                        padding: const EdgeInsets.only(right:20.0),
+                                        padding: const EdgeInsets.only(right:48.0, bottom: 8.0),
                                         child: Row(
                                             children: [
                                               Text(

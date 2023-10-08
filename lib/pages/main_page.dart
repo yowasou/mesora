@@ -30,14 +30,26 @@ class _MainPageState extends State<MainPage> {
   DateTime _startTime = DateTime.now();
 
   final List<CharacterData> _characterAllList = [
-    // 男性
-    CharacterData("man001.jpg",         "man",          594, 747, 189,  98, true),
+    CharacterData("man001.jpg",         "man",          0, 0, 1024, 1024, true),
+    CharacterData("man001.jpg",         "man",          0, 0, 1024, 1024, true),
+    CharacterData("man001.jpg",         "man",          0, 0, 1024, 1024, true),
+    CharacterData("man001.jpg",         "man",          0, 0, 1024, 1024, true),
+
+//    CharacterData("man001.jpg",         "man",          399, 369, 249, 118, true),
+//    CharacterData("man002.jpg",         "man",          367, 399, 351,  84, true),
+//    CharacterData("man003.jpg",         "man",          242, 410, 343,  60, true),
     // 女性
-    CharacterData("woman001.jpg",       "woman",        645, 337, 151,  36, true),
+//    CharacterData("woman001.jpg",       "woman",        492, 300, 154,  39, true),
+//    CharacterData("woman002.jpg",       "woman",        337, 300, 271,  68, true),
+//    CharacterData("woman003.jpg",       "woman",        459, 234, 212,  41, true),
     // 面接官
-    CharacterData("interviewer003.jpg", "interviewer",  573, 236,  95,  22, true),
+//    CharacterData("interviewer001.jpg", "interviewer",  425, 336, 372,  83, true),
+//    CharacterData("interviewer002.jpg", "interviewer",  573, 236,  95,  22, true),
+//    CharacterData("interviewer003.jpg", "interviewer",  478, 216,  99,  19, true),
     // ヤンキー
-    CharacterData("yankee010.jpeg",     "yankee",       673, 436, 366,  63, false),
+//    CharacterData("yankee004.jpeg",     "yankee",       499, 197, 130,  39, false),
+//    CharacterData("yankee007.jpeg",     "yankee",       456, 217, 138,  38, false),
+//    CharacterData("yankee010.jpeg",     "yankee",       277, 240, 419, 128, false),
   ];
 
   Image? _targetImage;
@@ -109,18 +121,36 @@ class _MainPageState extends State<MainPage> {
             // チェックタイム
             // チェック右
             _rightImage = DetectEyeData().rightEyeImage;
-            var hitTestRight = _hitTest(_rightImage, _rightX, _rightY, _rightCenterX, _rightCenterY, _baseWidth, _baseHeight);
-            // チェック左
-            _leftImage = DetectEyeData().leftEyeImage;
-            var hitTestLeft = _hitTest(_leftImage, _leftX, _leftY, _leftCenterX, _leftCenterY, _baseWidth, _baseHeight );
+            //var hitTestRight = _hitTest(_rightImage, _rightX, _rightY, _rightCenterX, _rightCenterY, _baseWidth, _baseHeight);
 
-            if(hitTestRight && hitTestLeft && character.checkMode){
+            if (_rightImage != null) {
+              _rightCenterX = _rightImage!.width;
+              _rightCenterY = _rightImage!.height;
+              _baseWidth = _rightImage!.width;
+              _baseHeight = _rightImage!.height;
+            }
+            var hitTestRight = _hitTest(_rightImage, 0, 0, _rightCenterX,
+                _rightCenterY, _baseWidth, _baseHeight);
+
+            if (hitTestRight && character.checkMode) {
               // 見つめているのでカウント
               MesoraAppData.addScore(MesoraAppData.encounter, 1);
-            }else if(!hitTestRight && !hitTestLeft && !character.checkMode){
+            } else if (!hitTestRight && !character.checkMode) {
               // 眼をそらしているのででカウント
               MesoraAppData.addScore(MesoraAppData.encounter, 1);
             }
+
+
+//            // チェック左
+//            _leftImage = DetectEyeData().leftEyeImage;
+//            var hitTestLeft = _hitTest(_leftImage, _leftX, _leftY, _leftCenterX, _leftCenterY, _baseWidth, _baseHeight );
+//            if(hitTestRight && hitTestLeft && character.checkMode){
+//              // 見つめているのでカウント
+//              MesoraAppData.addScore(MesoraAppData.encounter, 1);
+//            }else if(!hitTestRight && !hitTestLeft && !character.checkMode){
+//              // 眼をそらしているのででカウント
+//              MesoraAppData.addScore(MesoraAppData.encounter, 1);
+//            }
 
           }else {
             // 次に
@@ -213,53 +243,34 @@ class _MainPageState extends State<MainPage> {
   /// 眼の位置と画像の眼の位置の比較
   /// 比較は片目筒行います
   /// @param buff 眼の位置の画像のデータ
-  /// @param x 眼の位置の矩形のX座標
-  /// @param y 眼の位置の矩形のY座標
-  /// @param width 眼の位置の矩形の幅
-  /// @param height 眼の位置の矩形の高さ
-  /// @param baseWidth 認識に利用した映像の幅
-  /// @param baseHeight 認識に利用した映像の高さ
-  bool _hitTest(img.Image? clipImage, int x, int y, int centerX, int centerY, int baseWidth, int baseHeight){
-
+  /// @param x1 眼の位置の矩形のX座標
+  /// @param y1 眼の位置の矩形のY座標
+  /// @param x2 眼の位置の矩形の幅
+  /// @param y2 眼の位置の矩形の高さ
+  /// @param widh 認識に利用した映像の幅
+  /// @param height 認識に利用した映像の高さ
+  bool _hitTest(img.Image? clipImage, int x1, int y1, int x2, int y2, int width,
+      int height) {
     // 切り抜き画像がnullかどうか
-    if(clipImage == null){
+    if (clipImage == null) {
       return false;
     }
-
-    //　画像サイズが取れないので、固定値
-    double targetWidth = 1024.0;
-    //double tragetHeight = 1024.0;
-
-    // 切り抜き画像のサイズ取得
-    //int width = clipImage!.width;
-    //int height = clipImage!.height;
-
-    // 座標変換する
-    double scale = targetWidth.toDouble() / baseWidth.toDouble();
-
-    var scaleCenterX = centerX * scale;
-    var scaleCenterY = centerY * scale;
-
-    var character = MesoraAppData.getCurrentCharacterData();
-    if(character.areaX <= scaleCenterX && scaleCenterX <= (character.areaX + character.areaWidth)){
-      if(character.areaY <= scaleCenterY && scaleCenterY <= (character.areaY + character.areaHeight)){
-        // 範囲に入っているので、みつめてるかチェック
-        var buffer = clipImage.toList();
-
-        // 中心が黒目かどうか簡易チェック
-        var px = buffer[centerY - y * centerX - x];
-        var grayScale = (px.r + px.g + px.b) / 3;
-        if(grayScale > 128){
-          // 見つめてる
-          return true;
-        }else{
-          // 見つめてない
-          return true;
-        }
-      }
+    var buffer = clipImage.toList();
+    //中心座標
+    double centerX = (x2 - x1) / 2;
+    double centerY = (y2 - y1) / 2;
+    var px = buffer[(width * centerY + centerX).toInt()];
+    var grayScale = (px.r + px.g + px.b) / 3;
+    Logger.info('grayScale:${grayScale.toString()}');
+    if (grayScale < 128) {
+      // 見つめてる
+      return true;
+    } else {
+      // 見つめてない
+      return false;
     }
-    return false;
   }
+
 
   String _getImageAssetName(){
     return "assets/image/${MesoraAppData.getCurrentCharacterData().imageAssetname}";

@@ -75,12 +75,22 @@ class _TitlePageState extends State<TitlePage> with TickerProviderStateMixin {
           body: SafeArea(
               child: Stack(
                   children:[
+                    Image.asset('assets/image/background3.png'),
+/*
+                    Center(
+                        child:Column(
+                          children: [
+                              Image.asset('assets/image/background2.png', width:double.infinity),
+                          ],
+                        )
+                    ),
+*/
                     Center(
                       child:Column(
                         children: [
                           Padding(
                               padding: const EdgeInsets.only(top:200),
-                              child: Image.asset('assets/image/title.png', scale: 0.5),
+                              child: Image.asset('assets/image/title2.png', scale: 0.5),
                           ),
                         ],
                       )
