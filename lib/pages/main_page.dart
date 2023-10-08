@@ -140,6 +140,8 @@ class _MainPageState extends State<MainPage> {
               MesoraAppData.addScore(MesoraAppData.encounter, 1);
             }
 
+            MesoraAppData.setImageLeft(MesoraAppData.encounter, DetectEyeData().leftEyeImage);
+            MesoraAppData.setImageRight(MesoraAppData.encounter, DetectEyeData().rightEyeImage);
 
 //            // チェック左
 //            _leftImage = DetectEyeData().leftEyeImage;
