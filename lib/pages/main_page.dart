@@ -242,6 +242,10 @@ class _MainPageState extends State<MainPage> {
     );
   }
 
+  double grayScaleFromPixel(img.Pixel px) {
+    return (px.r + px.g + px.b) / 3;
+  }
+
   /// 眼の位置と画像の眼の位置の比較
   /// 比較は片目筒行います
   /// @param buff 眼の位置の画像のデータ
@@ -257,14 +261,25 @@ class _MainPageState extends State<MainPage> {
     if (clipImage == null) {
       return false;
     }
-    var buffer = clipImage.toList();
     //中心座標
-    double centerX = (x2 - x1) / 2;
-    double centerY = (y2 - y1) / 2;
-    var px = buffer[(width * centerY + centerX).toInt()];
-    var grayScale = (px.r + px.g + px.b) / 3;
+    int centerX = ((x2 - x1) / 2).toInt();
+    int centerY = ((y2 - y1) / 2).toInt();
+    List<double> grayScales = [
+      /* 中心 */
+      grayScaleFromPixel(clipImage.getPixel(centerX, centerY)),
+      /* 右 */
+      grayScaleFromPixel(clipImage.getPixel(centerX + 1, centerY)),
+      /* 左 */
+      grayScaleFromPixel(clipImage.getPixel(centerX - 1, centerY)),
+      /* 下 */
+      grayScaleFromPixel(clipImage.getPixel(centerX, centerY + 1)),
+      /* 上 */
+      grayScaleFromPixel(clipImage.getPixel(centerX, centerY - 1))
+    ];
+    double grayScale = grayScales.reduce((a, b) => a + b) / grayScales.length;
+    Logger.info('grayScales:${grayScales.toString()}');
     Logger.info('grayScale:${grayScale.toString()}');
-    if (grayScale < 28) {
+    if (grayScale < 128) {
       // 見つめてる
       return true;
     } else {
