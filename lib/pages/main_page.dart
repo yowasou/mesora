@@ -35,21 +35,21 @@ class _MainPageState extends State<MainPage> {
     CharacterData("man001.jpg",         "man",          0, 0, 1024, 1024, true),
     CharacterData("man001.jpg",         "man",          0, 0, 1024, 1024, true),
 
-//    CharacterData("man001.jpg",         "man",          399, 369, 249, 118, true),
-//    CharacterData("man002.jpg",         "man",          367, 399, 351,  84, true),
-//    CharacterData("man003.jpg",         "man",          242, 410, 343,  60, true),
+    CharacterData("man001.jpg",         "man",          399, 369, 249, 118, true),
+    CharacterData("man002.jpg",         "man",          367, 399, 351,  84, true),
+    CharacterData("man003.jpg",         "man",          242, 410, 343,  60, true),
     // 女性
-//    CharacterData("woman001.jpg",       "woman",        492, 300, 154,  39, true),
-//    CharacterData("woman002.jpg",       "woman",        337, 300, 271,  68, true),
-//    CharacterData("woman003.jpg",       "woman",        459, 234, 212,  41, true),
+    CharacterData("woman001.jpg",       "woman",        492, 300, 154,  39, true),
+    CharacterData("woman002.jpg",       "woman",        337, 300, 271,  68, true),
+    CharacterData("woman003.jpg",       "woman",        459, 234, 212,  41, true),
     // 面接官
-//    CharacterData("interviewer001.jpg", "interviewer",  425, 336, 372,  83, true),
-//    CharacterData("interviewer002.jpg", "interviewer",  573, 236,  95,  22, true),
-//    CharacterData("interviewer003.jpg", "interviewer",  478, 216,  99,  19, true),
+    CharacterData("interviewer001.jpg", "interviewer",  425, 336, 372,  83, true),
+    CharacterData("interviewer002.jpg", "interviewer",  573, 236,  95,  22, true),
+    CharacterData("interviewer003.jpg", "interviewer",  478, 216,  99,  19, true),
     // ヤンキー
-//    CharacterData("yankee004.jpeg",     "yankee",       499, 197, 130,  39, false),
-//    CharacterData("yankee007.jpeg",     "yankee",       456, 217, 138,  38, false),
-//    CharacterData("yankee010.jpeg",     "yankee",       277, 240, 419, 128, false),
+    CharacterData("yankee004.jpeg",     "yankee",       499, 197, 130,  39, false),
+    CharacterData("yankee007.jpeg",     "yankee",       456, 217, 138,  38, false),
+    CharacterData("yankee010.jpeg",     "yankee",       277, 240, 419, 128, false),
   ];
 
   Image? _targetImage;
@@ -262,7 +262,7 @@ class _MainPageState extends State<MainPage> {
     var px = buffer[(width * centerY + centerX).toInt()];
     var grayScale = (px.r + px.g + px.b) / 3;
     Logger.info('grayScale:${grayScale.toString()}');
-    if (grayScale < 128) {
+    if (grayScale < 28) {
       // 見つめてる
       return true;
     } else {

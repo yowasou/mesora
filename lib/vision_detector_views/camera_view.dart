@@ -128,9 +128,9 @@ class _CameraViewState extends State<CameraView> {
     //   );
     // }
     return Positioned(
-        top: 100,
-        left: 100,
-        child: Container(width: 200, height: 500, color: Colors.orange,),
+        top: 0,
+        left: 0,
+        child: Container(width: double.infinity, height: double.infinity, color: Colors.orange,),
     );
   }
 

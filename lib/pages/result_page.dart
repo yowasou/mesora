@@ -43,9 +43,10 @@ class _ResultPageState extends State<ResultPage> {
                                 for(int i = 0; i < MesoraAppData.max_step; i++) ... {
                                   Container(
                                       padding: const EdgeInsets.only(right: 16, bottom: 16),
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                         image: DecorationImage(
-                                          image:AssetImage("assets/image/scorebox${i+1}.png"),
+//                                          image:AssetImage("assets/image/scorebox${i+1}.png"),
+                                          image:AssetImage("assets/image/scoreboxlb.png"),
                                         ),
                                       ),
                                       width: 446,
