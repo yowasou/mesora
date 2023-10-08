@@ -40,8 +40,8 @@ class _MainPageState extends State<MainPage> {
     CharacterData("man003.jpg",         "man",          242, 410, 343,  60, true),
     // 女性
     CharacterData("woman001.jpg",       "woman",        492, 300, 154,  39, true),
-    CharacterData("woman002.jpg",       "woman",        337, 300, 271,  68, true),
-    CharacterData("woman003.jpg",       "woman",        459, 234, 212,  41, true),
+    CharacterData("woman002.jpeg",       "woman",        337, 300, 271,  68, true),
+    CharacterData("woman003.jpeg",       "woman",        459, 234, 212,  41, true),
     // 面接官
     CharacterData("interviewer001.jpg", "interviewer",  425, 336, 372,  83, true),
     CharacterData("interviewer002.jpg", "interviewer",  573, 236,  95,  22, true),
