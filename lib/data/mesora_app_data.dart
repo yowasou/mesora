@@ -1,4 +1,5 @@
 import 'package:mesora/data/character_data.dart';
+import 'package:image/image.dart' as img;
 
 // アプリデータ
 class MesoraAppData{
@@ -15,6 +16,10 @@ class MesoraAppData{
   // エンカウンター
   static int encounter = 0;
 
+  // 抽出画像
+  static List<img.Image?> imageLeft = [];
+  static List<img.Image?> imageRight = [];
+
   // 初期化
   static void initialize(int length){
     encounter = 0;
@@ -23,6 +28,10 @@ class MesoraAppData{
     for(int i = 0; i < length; i++){
       _scoreList.add(0);
     }
+    imageLeft.clear();
+    imageLeft = []..length = length;
+    imageRight.clear();
+    imageRight = []..length = length;
   }
 
   // スコア加算
@@ -51,4 +60,11 @@ class MesoraAppData{
     return MesoraAppData.encounterList[idx];
   }
 
+  static void setImageLeft(int index, img.Image? image) {
+    imageLeft[index] = image;
+  }
+
+  static void setImageRight(int index, img.Image? image) {
+    imageRight[index] = image;
+  }
 }

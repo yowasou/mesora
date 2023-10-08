@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:image/image.dart' as img;
 import 'package:mesora/pages/title_page.dart';
 
 import '../Data/mesora_app_data.dart';
@@ -50,21 +51,32 @@ class _ResultPageState extends State<ResultPage> {
                                       ),
                                       width: 446,
                                       height: 120,
-                                      child: Row(
-                                        mainAxisAlignment:MainAxisAlignment.end,
+                                      child: Stack(
                                         children: [
-                                          Container(
+                                          Row(
+                                            mainAxisAlignment:MainAxisAlignment.end,
+                                            children: [
+                                              Container(
                                             padding: const EdgeInsets.only(right:48.0, bottom: 8.0),
-                                            child: Row(
-                                              children: [
-                                                Text(
-                                                  "${MesoraAppData.getScore(i)}",
-                                                  style: const TextStyle(
-                                                    fontSize: 60,
-                                                  )
-                                                )
-                                              ]
-                                            ),
+                                                child: Row(
+                                                  children: [
+                                                    Text(
+                                                      "${MesoraAppData.getScore(i)}",
+                                                      style: const TextStyle(
+                                                        fontSize: 60,
+                                                      )
+                                                    )
+                                                  ]
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          Column(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            children: [
+                                              _buildImageLeft(i),
+                                              _buildImageRiget(i),
+                                            ],
                                           ),
                                         ],
                                       ),
@@ -125,6 +137,42 @@ class _ResultPageState extends State<ResultPage> {
                 )
             )
         )
+    );
+  }
+
+  // 画像表示(左目)
+  Widget _buildImageLeft(int index) {
+    var image;
+    if (MesoraAppData.imageLeft[index] != null) {
+      image = Image.memory(
+        img.encodeJpg(MesoraAppData.imageLeft[index]!).buffer.asUint8List()
+      );
+    } else {
+      image = Container();
+    }
+    return Container(
+      margin: EdgeInsets.only(left: 15, top: 5, right: 15),
+      padding: EdgeInsets.all(2),
+      width: 120,
+      child: image,
+    );
+  }
+
+  // 画像表示(右目)
+  Widget _buildImageRiget(int index) {
+    var image;
+    if (MesoraAppData.imageRight[index] != null) {
+      image = Image.memory(
+        img.encodeJpg(MesoraAppData.imageRight[index]!).buffer.asUint8List()
+      );
+    } else {
+      image = Container();
+    }
+    return Container(
+      margin: EdgeInsets.only(left: 15, top: 5, right: 15),
+      padding: EdgeInsets.all(2),
+      width: 120,
+      child: image,
     );
   }
 }
